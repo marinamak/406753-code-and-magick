@@ -64,11 +64,15 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+var renderSimilarWizards = function(wizardsArray) {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < wizardsArray.length; i++) {
+    fragment.appendChild(renderWizard(wizardsArray[i]));
+  };
+  similarListElement.appendChild(fragment);
 };
-similarListElement.appendChild(fragment);
+
+renderSimilarWizards(wizards);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
